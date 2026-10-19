@@ -4,10 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:maui_questionnaire"
-    Title="maui_questionnaire">
+    x:Name="_AppShell_"
+    Title="GameQuest">
 
     <ShellContent
-        Title="Home"
+        x:Name="_MainShellContent_"
+        Title="GameQuest"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

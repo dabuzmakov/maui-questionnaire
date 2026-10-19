@@ -1,36 +1,298 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="maui_questionnaire.MainPage">
+             x:Class="maui_questionnaire.MainPage"
+             x:Name="_MainPage_"
+             Title="GameQuest"
+             BackgroundColor="#0F1020"
+             Shell.NavBarIsVisible="False">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a submarine number ten" />
+    <ScrollView x:Name="_MainScrollView_">
+        <VerticalStackLayout x:Name="_PageStack_"
+                             Padding="20,28,20,36"
+                             Spacing="18">
+            <Image x:Name="_GameImage_"
+                   Source="game_controller.svg"
+                   Aspect="AspectFit"
+                   HeightRequest="96"
+                   Margin="0,0,0,2" />
 
-            <Label
-                Text="Hello, World!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+            <Label x:Name="_TitleLabel_"
+                   Text="GameQuest"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center" />
 
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+            <Label x:Name="_SubtitleLabel_"
+                   Text="Расскажите о своих игровых предпочтениях"
+                   FontSize="15"
+                   FontAttributes="None"
+                   TextColor="#B7B8D0"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,-10,0,4" />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
+            <Border x:Name="_ProfileBorder_"
+                    BackgroundColor="#191A2E"
+                    Stroke="#303250"
+                    StrokeThickness="1"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle x:Name="_ProfileShape_" CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout x:Name="_ProfileStack_" Spacing="12">
+                    <Label x:Name="_ProfileTitleLabel_"
+                           Text="О вас"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#FFFFFF" />
+
+                    <Label x:Name="_NameLabel_"
+                           Text="Имя *"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#D8D9EA" />
+                    <Entry x:Name="_NameEntry_"
+                           Placeholder="Введите имя"
+                           Keyboard="Text"
+                           MaxLength="40"
+                           TextColor="#FFFFFF"
+                           PlaceholderColor="#777995"
+                           BackgroundColor="#23243C"
+                           Margin="0,-4,0,2" />
+
+                    <Label x:Name="_AgeLabel_"
+                           Text="Возраст *"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#D8D9EA" />
+                    <Entry x:Name="_AgeEntry_"
+                           Placeholder="Введите возраст"
+                           Keyboard="Numeric"
+                           MaxLength="3"
+                           TextColor="#FFFFFF"
+                           PlaceholderColor="#777995"
+                           BackgroundColor="#23243C"
+                           Margin="0,-4,0,2" />
+
+                    <Label x:Name="_PlatformLabel_"
+                           Text="Игровая платформа"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#D8D9EA" />
+                    <VerticalStackLayout x:Name="_PlatformStack_" Spacing="2" Margin="0,-4,0,2">
+                        <RadioButton x:Name="_PcRadioButton_"
+                                     Content="Компьютер (PC)"
+                                     GroupName="Platform"
+                                     Value="Компьютер (PC)"
+                                     IsChecked="True"
+                                     TextColor="#FFFFFF" />
+                        <RadioButton x:Name="_ConsoleRadioButton_"
+                                     Content="Консоль"
+                                     GroupName="Platform"
+                                     Value="Консоль"
+                                     TextColor="#FFFFFF" />
+                        <RadioButton x:Name="_PhoneRadioButton_"
+                                     Content="Смартфон"
+                                     GroupName="Platform"
+                                     Value="Смартфон"
+                                     TextColor="#FFFFFF" />
+                    </VerticalStackLayout>
+
+                    <Label x:Name="_GenreLabel_"
+                           Text="Любимый жанр"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#D8D9EA" />
+                    <Picker x:Name="_GenrePicker_"
+                            Title="Выберите жанр"
+                            TextColor="#FFFFFF"
+                            TitleColor="#777995"
+                            BackgroundColor="#23243C"
+                            Margin="0,-4,0,2">
+                        <Picker.Items>
+                            <x:String>Приключения</x:String>
+                            <x:String>Шутеры</x:String>
+                            <x:String>Стратегии</x:String>
+                            <x:String>RPG</x:String>
+                            <x:String>Гонки</x:String>
+                            <x:String>MOBA</x:String>
+                            <x:String>Симуляторы</x:String>
+                            <x:String>Головоломки</x:String>
+                            <x:String>Спортивные игры</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border x:Name="_PreferencesBorder_"
+                    BackgroundColor="#191A2E"
+                    Stroke="#303250"
+                    StrokeThickness="1"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle x:Name="_PreferencesShape_" CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout x:Name="_PreferencesStack_" Spacing="12">
+                    <Label x:Name="_PreferencesTitleLabel_"
+                           Text="Игровые предпочтения"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#FFFFFF" />
+
+                    <Grid x:Name="_StoryGrid_" RowDefinitions="Auto" ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                        <CheckBox x:Name="_StoryCheckBox_"
+                                  Grid.Row="0"
+                                  Grid.Column="0"
+                                  IsChecked="False"
+                                  Color="#7C5CFC" />
+                        <Label x:Name="_StoryLabel_"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               Text="Люблю игры с интересным сюжетом"
+                               FontSize="14"
+                               FontAttributes="None"
+                               TextColor="#FFFFFF"
+                               VerticalTextAlignment="Center" />
+                    </Grid>
+
+                    <Grid x:Name="_FriendsGrid_" RowDefinitions="Auto" ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                        <CheckBox x:Name="_FriendsCheckBox_"
+                                  Grid.Row="0"
+                                  Grid.Column="0"
+                                  IsChecked="False"
+                                  Color="#7C5CFC" />
+                        <Label x:Name="_FriendsLabel_"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               Text="Люблю играть с друзьями"
+                               FontSize="14"
+                               FontAttributes="None"
+                               TextColor="#FFFFFF"
+                               VerticalTextAlignment="Center" />
+                    </Grid>
+
+                    <Grid x:Name="_RecommendationsGrid_" RowDefinitions="Auto" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label x:Name="_RecommendationsLabel_"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Получать рекомендации"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#D8D9EA"
+                               VerticalTextAlignment="Center" />
+                        <Switch x:Name="_RecommendationsSwitch_"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                IsToggled="False"
+                                OnColor="#7C5CFC" />
+                    </Grid>
+
+                    <Label x:Name="_FavoriteGamesLabel_"
+                           Text="Любимые игры"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#D8D9EA" />
+                    <Editor x:Name="_FavoriteGamesEditor_"
+                            Placeholder="Например: Portal 2, Minecraft, Hades"
+                            AutoSize="TextChanges"
+                            MaxLength="300"
+                            IsEnabled="{Binding Source={x:Reference _RecommendationsSwitch_}, Path=IsToggled, Mode=OneWay}"
+                            TextColor="#FFFFFF"
+                            PlaceholderColor="#777995"
+                            BackgroundColor="#23243C"
+                            MinimumHeightRequest="88"
+                            Margin="0,-4,0,2" />
+
+                    <Grid x:Name="_HoursHeaderGrid_" RowDefinitions="Auto" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label x:Name="_HoursLabel_"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Часов игры в неделю"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#D8D9EA" />
+                        <Label x:Name="_HoursValueLabel_"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               Text="{Binding Source={x:Reference _HoursSlider_}, Path=Value, Mode=OneWay, StringFormat='{}{0:F0} ч'}"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#9C87FF" />
+                    </Grid>
+                    <Slider x:Name="_HoursSlider_"
+                            Minimum="1"
+                            Maximum="40"
+                            Value="8"
+                            MinimumTrackColor="#7C5CFC"
+                            MaximumTrackColor="#3B3D5C"
+                            ThumbColor="#A995FF"
+                            Margin="0,-6,0,2" />
+
+                    <Label x:Name="_LastSessionLabel_"
+                           Text="Дата последней игровой сессии"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#D8D9EA" />
+                    <DatePicker x:Name="_LastSessionDatePicker_"
+                                Format="dd.MM.yyyy"
+                                Date="10/19/2026"
+                                MinimumDate="01/01/2000"
+                                MaximumDate="10/19/2026"
+                                TextColor="#FFFFFF"
+                                BackgroundColor="#23243C"
+                                Margin="0,-4,0,2" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid x:Name="_ButtonsGrid_"
+                  RowDefinitions="Auto"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="12"
+                  Margin="0,2,0,0">
+                <Button x:Name="_ShowResultButton_"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Показать результат"
+                        Clicked="OnShowResultClicked"
+                        BackgroundColor="#7C5CFC"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold" />
+                <Button x:Name="_ClearButton_"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="Очистить"
+                        Clicked="OnClearClicked"
+                        BackgroundColor="#2A2B45"
+                        TextColor="#FFFFFF"
+                        BorderColor="#484A68"
+                        BorderWidth="1" />
+            </Grid>
+
+            <Border x:Name="_ResultBorder_"
+                    IsVisible="False"
+                    BackgroundColor="#201D3B"
+                    Stroke="#7C5CFC"
+                    StrokeThickness="1"
+                    Padding="16"
+                    Margin="0,2,0,0">
+                <Border.StrokeShape>
+                    <RoundRectangle x:Name="_ResultShape_" CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout x:Name="_ResultStack_" Spacing="8">
+                    <Label x:Name="_ResultTitleLabel_"
+                           Text="Ваш игровой профиль"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#FFFFFF" />
+                    <Label x:Name="_ResultLabel_"
+                           Text="Результат появится здесь"
+                           FontSize="14"
+                           FontAttributes="None"
+                           TextColor="#D8D9EA"
+                           LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+            </Border>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

@@ -28,7 +28,7 @@
 		<MauiXamlInflator>SourceGen</MauiXamlInflator>
 
 		<!-- Display name -->
-		<ApplicationTitle>maui-questionnaire</ApplicationTitle>
+		<ApplicationTitle>GameQuest</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.mauiquestionnaire</ApplicationId>
